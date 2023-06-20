@@ -1,15 +1,17 @@
 import "./App.scss";
 import Search from "./components/search/search";
 import Weather from "./components/weather/weather";
-import Time from "./components/Time/Time";
+import Nowtime from "./components/Time/Time";
 
 function App() {
   return (
-    <div>
-      <Search />
-      <Weather />
-      <Time />
-    </div>
+    <body>
+      <div>
+        <Search />
+        <Weather />
+        <Nowtime />
+      </div>
+    </body>
   );
 }
 

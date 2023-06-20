@@ -1,18 +1,23 @@
+import { useEffect, useState } from "react";
 import "./Time.scss";
 
-function Time() {
-  // function getClock() {
-  //   const clock = document.querySelector("h2.clock");
-  //   const date = new Date();
-  //   const hours = String(date.getHours()).padStart(2, "0");
-  //   const minutes = String(date.getMinutes()).padStart(2, "0");
-  //   // const seconds = String(date.getSeconds()).padStart(2, "0");
-  //   clock.innerText = `${hours}:${minutes}`; //시간 표현
-  // }
-  // getClock();
-  // setInterval(getClock, 1000);
+function Nowtime() {
+  let [realTime, setRealTime] = useState("");
 
-  return <h2 className="clock">00:00</h2>;
+  useEffect(() => {
+    setInterval(() => {
+      const now = new Date();
+      const hours = String(now.getHours());
+      const minutes = String(now.getMinutes());
+
+      setRealTime(`${hours}:${minutes}`);
+    }, 1000);
+  });
+  return (
+    <>
+      <div className="real-time">{realTime}</div>
+    </>
+  );
 }
 
-export default Time;
+export default Nowtime;
