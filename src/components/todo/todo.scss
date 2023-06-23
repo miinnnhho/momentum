@@ -1,0 +1,35 @@
+.App-todo {
+  width: 100vw;
+//   height: 100vh;
+//   background-color: #161616;
+  color: white;
+}
+.App-todo,
+.dragging {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.dragging {
+  width: 200px;
+//   background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s;
+  user-select: none;
+}
+
+.dragging,
+li:hover {
+  color: #927ef4;
+}
+
+//기초 틀 잡기 완

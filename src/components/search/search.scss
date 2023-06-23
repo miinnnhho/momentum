@@ -1,35 +1,37 @@
 // navbar(검색창)
 .nav {
-    margin: 5vh;
-    .nav-input {
-      outline-style: none;
-      background: none;
-      border: 0px;
-      border-bottom: 2px solid;
-      margin-left: 10px;
-      width: 30px;
-      transition: all 1s;
-    }
-    span {
-      font-size: 20px;
-      font-weight: 400;
-    }
-    //   .color-WH {
-    //   }
-    .nav-input:focus {
-      width: 300px;
-    }
-    .nav-input:hover {
-      width: 300px;
-    }
-    .search {
-      margin-left: 10px;
-      font-size: 20px;
-      transition: all 0.5s;
-      cursor: pointer;
-    }
-    .search:hover {
-      font-size: 30px;
-    }
+  margin: 5vh;
+  .nav-input {
+    outline-style: none;
+    background: none;
+    border: 0px;
+    border-bottom: 2px solid;
+    margin-left: 10px;
+    width: 30px;
+    transition: all 1s;
+    color: white;
   }
-  
+  span {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  //   .color-WH {
+  //   }
+  .nav-input:focus {
+    width: 300px;
+    color: white;
+  }
+  .nav-input:hover {
+    width: 300px;
+    color: white;
+  }
+  .search {
+    margin-left: 10px;
+    font-size: 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+  .search:hover {
+    font-size: 30px;
+  }
+}
