@@ -1,7 +1,3 @@
-const loginForm = document.querySelector("#login-form");
-const loginInput = loginForm.querySelector("input");
-// const loginButton = loginForm.querySelector("Button");
-const greeting = document.querySelector("#greeting");
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username"; //오타 방지로 고정
 
@@ -9,6 +5,12 @@ const USERNAME_KEY = "username"; //오타 방지로 고정
 //(실수하고싶지 않은 string인 걸 상기시킴)
 
 function Greeting() {
+
+  const loginForm = document.querySelector("#login-form");
+  const loginInput = loginForm.querySelector("input");
+  // const loginButton = loginForm.querySelector("Button");
+  const greeting = document.querySelector("#greeting");
+
   function onLoginSubmit(event) {
     event.preventDefault();
     loginForm.classList.add(HIDDEN_CLASSNAME);
@@ -39,7 +41,7 @@ function Greeting() {
       <input type="text" required />
       <input type="submit" value="Log In" /> 
     </form>
-     <h1 id="greeting" class="hidden"></h1>
+     {/* <h1 id="greeting" class="hidden"></h1> */}
      </div>
     
   )

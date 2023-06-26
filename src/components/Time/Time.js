@@ -7,12 +7,15 @@ function Nowtime() {
   useEffect(() => {
     setInterval(() => {
       const now = new Date();
-      const hours = String(now.getHours());
-      const minutes = String(now.getMinutes());
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
 
       setRealTime(`${hours}:${minutes}`);
     }, 1000);
   });
+
+
+  
   return (
     <>
       <div className="real-time">{realTime}</div>

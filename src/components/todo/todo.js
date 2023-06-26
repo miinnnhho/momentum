@@ -1,57 +1,71 @@
-import { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import './todo.scss';
-const initialItems = [
-  { id: "item-1", content: "Element 1" },
-  { id: "item-2", content: "Element 2" },
-  { id: "item-3", content: "Element 3" },
-];
+import React from "react";
+import "./todo.scss";
+import { FiDelete } from "react-icons/fi";
 
-const DragAndDropList = () => {
-  const [items, setItems] = useState(initialItems);
+function TodoList() {
+  const [todoList, setTodoList] = React.useState([]);
+  const [newTodoTitle, setNewTodoTitle] = React.useState("");
 
-  const handleDragEnd = (result) => {
-    if (!result.destination) return;
+  function handleAddTodo() {
+    if (!newTodoTitle) return;
+    setTodoList([
+      ...todoList,
+      { title: newTodoTitle, isCompleted: false, completeAt: null },
+    ]);
+    setNewTodoTitle("");
+  }
 
-    const { source, destination } = result;
+  function handleToggle(index) {
+    const newTodoList = [...todoList];
+    newTodoList[index].isCompleted = !newTodoList[index].isCompleted;
+    newTodoList[index].completeAt = newTodoList[index].isCompleted
+      ? new Date()
+      : null;
+    setTodoList(newTodoList);
+  }
 
-    const newItems = Array.from(items);
-
-    const [movedItem] = newItems.splice(source.index, 1);
-    newItems.splice(destination.index, 0, movedItem);
-
-    setItems(newItems);
-  };
+  function handleDelete(index) {
+    const newTodoList = [...todoList];
+    newTodoList.splice(index, 1);
+    setTodoList(newTodoList);
+  }
 
   return (
-    <div className="App-todo">
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="droppable-list">
-          {(provided) => (
-            <ul {...provided.droppableProps} ref={provided.innerRef}>
-              {items.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided, snapshot) => (
-                    <li
-                      className={snapshot.isDragging ? "dragging" : ""}
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      {item.content}
-                    </li>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-      </DragDropContext>
+    <div>
+      <div>
+        <h3 className="question">What is your main focus for today?</h3>
+        <div className="TodoAddAndHistory">
+          <input
+            className="WriteTodo"
+            type="text"
+            value={newTodoTitle}
+            onChange={(e) => setNewTodoTitle(e.target.value)}
+          />
+          <button onClick={handleAddTodo}>+</button>
+        </div>
+        <ul className="TodoBoard">
+          {todoList.map((todoItem, index) => (
+            <li key={index}>
+              <input
+                className="TodoBoard-check"
+                type="checkbox"
+                checked={todoItem.isCompleted}
+                onChange={() => handleToggle(index)}
+              />
+              {todoItem.title}
+
+              <button
+                className="DeleteButton"
+                onClick={() => handleDelete(index)}
+              >
+                <FiDelete />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
-};
+}
 
-export default DragAndDropList;
-
-//일단 코드 쳐놨으니 css추가하든 수정 ㄱㄱ
+export default TodoList;

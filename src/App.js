@@ -3,7 +3,8 @@ import Search from "./components/search/search";
 import Weather from "./components/weather/weather";
 import Nowtime from "./components/Time/Time";
 // import Greeting from "./components/greeting/greeting";
-import DragAndDropList from "./components/todo/todo";
+import TodoList from "./components/todo/todo";
+
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Weather />
       <Nowtime />
       {/* <Greeting /> */}
-      <DragAndDropList />
+      <TodoList />
     </div>
   );
 }
